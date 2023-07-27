@@ -9,6 +9,7 @@ interface DraggableCardProps {
 
 const Card = styled.div`
   padding: 10px;
+  margin-bottom: 5px;
   border-radius: 5px;
   background-color: ${props => props.theme.cardColor};
 `;

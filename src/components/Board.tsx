@@ -17,7 +17,6 @@ const BoardWrapper = styled.div`
 const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 5px;
 `;
 
 const Title = styled.h2`
