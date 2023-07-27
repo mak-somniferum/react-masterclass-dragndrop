@@ -37,10 +37,14 @@ const Card = styled.div`
 function App() {
   const [toDos, setToDos] = useRecoilState(toDoState);
   const onDragEnd = ({ destination, source }: DropResult) => {
+    if (!destination) return;
     setToDos(oldTodos => {
+      // 1) Copy
       const newToDos = [...oldTodos];
-      const [removed] = newToDos.splice(source.index, 1);
-      newToDos.splice(destination!.index, 0, removed);
+      // 2) Remove item on source index -> This will be returned as an array ['dragged-item']
+      const [copied] = newToDos.splice(source.index, 1);
+      // 3) Add item on destination index
+      newToDos.splice(Number(destination?.index), 0, copied);
       return newToDos;
     });
   };
@@ -53,7 +57,8 @@ function App() {
               {magic => (
                 <Board ref={magic.innerRef} {...magic.droppableProps}>
                   {toDos.map((toDo, index) => (
-                    <Draggable key={index} draggableId={toDo} index={index}>
+                    // Draggable key, draggableId are same value
+                    <Draggable key={toDo} draggableId={toDo} index={index}>
                       {magic => (
                         <Card ref={magic.innerRef} {...magic.draggableProps} {...magic.dragHandleProps}>
                           {toDo}
