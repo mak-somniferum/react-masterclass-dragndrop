@@ -4,6 +4,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { RecoilRoot } from 'recoil';
 import { ThemeProvider } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 import { theme } from './theme';
 
 const GlobalStyle = createGlobalStyle`
