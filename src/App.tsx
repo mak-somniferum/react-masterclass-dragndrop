@@ -1,6 +1,8 @@
 import React from 'react';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
+import { useRecoilState } from 'recoil';
 import { styled } from 'styled-components';
+import { toDoState } from './atoms';
 
 const Wrapper = styled.div`
   display: flex;
@@ -32,10 +34,11 @@ const Card = styled.div`
   background-color: ${props => props.theme.cardColor};
 `;
 
-const toDos = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
-
 function App() {
-  const onDragEnd = () => {};
+  const [toDos, setToDos] = useRecoilState(toDoState);
+  const onDragEnd = ({ destination, source }: DropResult) => {
+    console.log(destination, source);
+  };
   return (
     <>
       <DragDropContext onDragEnd={onDragEnd}>
