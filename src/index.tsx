@@ -5,7 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import { RecoilRoot } from 'recoil';
 import { ThemeProvider } from 'styled-components';
 import { createGlobalStyle } from 'styled-components';
-import { theme } from './theme';
+import { darkTheme } from './theme';
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
@@ -62,7 +62,7 @@ table {
 body {
   font-family: 'Source Sans Pro', sans-serif;
   background-color: ${props => props.theme.bgColor};
-  color: ${props => props.theme.textColor}
+  color: 'black';
 }
 a {
   text-decoration: none;
@@ -72,14 +72,12 @@ a {
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
-  <React.StrictMode>
-    <RecoilRoot>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <App />
-      </ThemeProvider>
-    </RecoilRoot>
-  </React.StrictMode>
+  <RecoilRoot>
+    <ThemeProvider theme={darkTheme}>
+      <GlobalStyle />
+      <App />
+    </ThemeProvider>
+  </RecoilRoot>
 );
 
 // If you want to start measuring performance in your app, pass a function
