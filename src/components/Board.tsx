@@ -8,8 +8,8 @@ interface BoardProps {
 }
 
 interface AreaProps {
-  isdraggingover: boolean;
-  isdraggingfromthis: boolean;
+  $isDraggingOver: boolean;
+  $isDraggingFromThis: boolean;
 }
 
 const BoardWrapper = styled.div`
@@ -23,7 +23,7 @@ const BoardWrapper = styled.div`
 
 const Area = styled.div<AreaProps>`
   flex-grow: 1;
-  background-color: ${props => (props.isdraggingover ? '#74b9ff' : props.isdraggingfromthis ? '#ff7675' : '#b2bec3')};
+  background-color: ${props => (props.$isDraggingOver ? '#74b9ff' : props.$isDraggingFromThis ? '#ff7675' : '#b2bec3')};
   transition: background-color 0.3s;
 `;
 
@@ -39,7 +39,7 @@ function Board({ toDos, boardId }: BoardProps) {
       <Title>{boardId}</Title>
       <Droppable droppableId={boardId}>
         {(magic, info) => (
-          <Area isdraggingover={info.isDraggingOver} isdraggingfromthis={Boolean(info.draggingFromThisWith)} ref={magic.innerRef} {...magic.droppableProps}>
+          <Area $isDraggingOver={info.isDraggingOver} $isDraggingFromThis={Boolean(info.draggingFromThisWith)} ref={magic.innerRef} {...magic.droppableProps}>
             {toDos.map((toDo, index) => (
               <DraggableCard key={toDo} toDo={toDo} index={index} />
             ))}
