@@ -15,7 +15,7 @@ interface AreaProps {
 const BoardWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 20px 10px;
+  padding: 20px 0;
   border-radius: 10px;
   min-height: 200px;
   background-color: ${props => props.theme.boardColor};
@@ -23,7 +23,8 @@ const BoardWrapper = styled.div`
 
 const Area = styled.div<AreaProps>`
   flex-grow: 1;
-  background-color: ${props => (props.$isDraggingOver ? '#74b9ff' : props.$isDraggingFromThis ? '#ff7675' : '#b2bec3')};
+  padding: 10px;
+  background-color: ${props => (props.$isDraggingOver ? '#fdcb6e' : props.$isDraggingFromThis ? '#c3c9cb' : 'transparent')};
   transition: background-color 0.3s;
 `;
 
