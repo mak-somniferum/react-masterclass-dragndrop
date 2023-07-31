@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/react-masterclass-dragndrop/static/js/main.d46b90e7.js",
+    "static/js/787.d2363613.chunk.js": "/react-masterclass-dragndrop/static/js/787.d2363613.chunk.js",
+    "index.html": "/react-masterclass-dragndrop/index.html",
+    "main.d46b90e7.js.map": "/react-masterclass-dragndrop/static/js/main.d46b90e7.js.map",
+    "787.d2363613.chunk.js.map": "/react-masterclass-dragndrop/static/js/787.d2363613.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.d46b90e7.js"
+  ]
+}
