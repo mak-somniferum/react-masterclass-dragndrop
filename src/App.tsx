@@ -25,6 +25,7 @@ function App() {
   const [toDos, setToDos] = useRecoilState(toDoState);
   const onDragEnd = (info: DropResult) => {
     const { destination, source } = info;
+    console.log(info);
     if (destination?.droppableId === source?.droppableId) {
       // Same board
       setToDos(allBoards => {

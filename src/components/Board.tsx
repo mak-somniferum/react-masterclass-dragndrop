@@ -1,15 +1,20 @@
 import { Droppable } from 'react-beautiful-dnd';
 import DraggableCard from './DraggableCard';
 import { styled } from 'styled-components';
+import { ITodo } from '../atoms';
 
 interface BoardProps {
-  toDos: string[];
+  toDos: ITodo[];
   boardId: string;
 }
 
 interface AreaProps {
   $isDraggingOver: boolean;
   $isDraggingFromThis: boolean;
+}
+
+interface IForm {
+  toDo: string;
 }
 
 const BoardWrapper = styled.div`
@@ -34,6 +39,14 @@ const Title = styled.h2`
   font-weight: 600;
 `;
 
+const Form = styled.form`
+  width: 100%;
+
+  input {
+    width: 100%;
+  }
+`;
+
 function Board({ toDos, boardId }: BoardProps) {
   return (
     <BoardWrapper>
@@ -42,7 +55,7 @@ function Board({ toDos, boardId }: BoardProps) {
         {(magic, info) => (
           <Area $isDraggingOver={info.isDraggingOver} $isDraggingFromThis={Boolean(info.draggingFromThisWith)} ref={magic.innerRef} {...magic.droppableProps}>
             {toDos.map((toDo, index) => (
-              <DraggableCard key={toDo} toDo={toDo} index={index} />
+              <DraggableCard key={toDo.id} toDoId={toDo.id} toDoText={toDo.text} index={index} />
             ))}
             {magic.placeholder}
           </Area>
