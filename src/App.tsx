@@ -25,10 +25,10 @@ function App() {
   const [toDos, setToDos] = useRecoilState(toDoState);
   const onDragEnd = (info: DropResult) => {
     const { destination, source } = info;
-    console.log(info);
+
     if (destination?.droppableId === source?.droppableId) {
       // Same board
-      setToDos(allBoards => {
+      setToDos((allBoards) => {
         const newBoard = [...allBoards[source.droppableId]];
         const [copied] = newBoard.splice(source.index, 1);
         newBoard.splice(destination.index, 0, copied);
@@ -38,7 +38,7 @@ function App() {
     if (destination?.droppableId !== source?.droppableId) {
       // Cross board
       if (!destination) return;
-      setToDos(allBoards => {
+      setToDos((allBoards) => {
         const startBoard = [...allBoards[source.droppableId]];
         const [copied] = startBoard.splice(source.index, 1);
         const endBoard = [...allBoards[destination?.droppableId]];
@@ -56,7 +56,7 @@ function App() {
       <DragDropContext onDragEnd={onDragEnd}>
         <Wrapper>
           <Boards>
-            {Object.keys(toDos).map(boardId => (
+            {Object.keys(toDos).map((boardId) => (
               <Board key={boardId} toDos={toDos[boardId]} boardId={boardId} />
             ))}
           </Boards>
