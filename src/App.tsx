@@ -88,6 +88,34 @@ function App() {
           return new Map(copied);
         });
       }
+    } else {
+      // Same board
+      if (destination?.droppableId === source?.droppableId) {
+        // setBoards((allBoards) => {
+        //   const copied = [...boardsArray];
+        //   const [targetBoard] = copied.splice(index, 1);
+        //   const allMemos = [...targetBoard[1]];
+        //   const [targetMemo] = allMemos.splice(source.index, 1);
+        //   allMemos.splice(destination.index, 0, targetMemo);
+        //   copied.splice(index, 0, [source.droppableId, allMemos]);
+        //   return new Map(copied);
+        // });
+      }
+      // Cross board
+      // if (destination?.droppableId !== source?.droppableId) {
+      //   setBoards((allBoards) => {
+      //     const copied = [...boardsArray];
+      //     const startBoard = [...allBoards[source.droppableId]];
+      //     const [copied] = startBoard.splice(source.index, 1);
+      //     const endBoard = [...allBoards[destination?.droppableId]];
+      //     endBoard.splice(destination?.index, 0, copied);
+      //     return {
+      //       ...allBoards,
+      //       [source.droppableId]: startBoard,
+      //       [destination?.droppableId]: endBoard,
+      //     };
+      //   });
+      // }
     }
   };
 

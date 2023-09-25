@@ -1,9 +1,9 @@
 import React from 'react';
-import { Draggable, DropResult, Droppable } from 'react-beautiful-dnd';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { Draggable, Droppable } from 'react-beautiful-dnd';
+import { useRecoilState } from 'recoil';
 import { useForm } from 'react-hook-form';
 import { styled } from 'styled-components';
-import { IMemo, boardArraySelector, boardState } from '../atoms';
+import { IMemo, boardState } from '../atoms';
 import DraggableCard from './DraggableCard';
 
 interface BoardProps {
@@ -68,39 +68,7 @@ const Area = styled.div<AreaProps>`
 
 function Board({ memos, boardId, index }: BoardProps) {
   const [boards, setBoards] = useRecoilState(boardState);
-  const boardsArray = useRecoilValue(boardArraySelector);
-  const onDragEnd = (info: DropResult) => {
-    const { destination, source } = info;
-    console.log(info);
-    if (!destination) return;
-    if (destination?.droppableId === source?.droppableId) {
-      // Same board
-      setBoards((allBoards) => {
-        const copied = [...boardsArray];
-        const [targetBoard] = copied.splice(index, 1);
-        const allMemos = [...targetBoard[1]];
-        const [targetMemo] = allMemos.splice(source.index, 1);
-        allMemos.splice(destination.index, 0, targetMemo);
-        copied.splice(index, 0, [source.droppableId, allMemos]);
-        return new Map(copied);
-      });
-    }
-    // if (destination?.droppableId !== source?.droppableId) {
-    //   // Cross board
-    //   setBoards((allBoards) => {
-    //     const copied = [...boardsArray];
-    //     const startBoard = [...allBoards[source.droppableId]];
-    //     const [copied] = startBoard.splice(source.index, 1);
-    //     const endBoard = [...allBoards[destination?.droppableId]];
-    //     endBoard.splice(destination?.index, 0, copied);
-    //     return {
-    //       ...allBoards,
-    //       [source.droppableId]: startBoard,
-    //       [destination?.droppableId]: endBoard,
-    //     };
-    //   });
-    // }
-  };
+
   const { register, setValue, handleSubmit } = useForm<IForm>();
   const onValid = ({ memo }: IForm) => {
     const newMemo = {
