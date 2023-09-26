@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/react-masterclass-dragndrop/static/js/main.85ac278e.js",
+    "main.js": "/react-masterclass-dragndrop/static/js/main.18ac8c3c.js",
     "static/js/787.d2363613.chunk.js": "/react-masterclass-dragndrop/static/js/787.d2363613.chunk.js",
     "index.html": "/react-masterclass-dragndrop/index.html",
-    "main.85ac278e.js.map": "/react-masterclass-dragndrop/static/js/main.85ac278e.js.map",
+    "main.18ac8c3c.js.map": "/react-masterclass-dragndrop/static/js/main.18ac8c3c.js.map",
     "787.d2363613.chunk.js.map": "/react-masterclass-dragndrop/static/js/787.d2363613.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.85ac278e.js"
+    "static/js/main.18ac8c3c.js"
   ]
 }
